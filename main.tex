@@ -1,0 +1,257 @@
+\documentclass{article}
+\usepackage{fontawesome5}
+\usepackage[table]{xcolor}
+% Language setting
+\usepackage[spanish]{babel}
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{url}
+% Title and author info
+\title{\huge\textbf{TALLER I PROFILING}}
+\author{Gamboa Macias Erika  Cod.506221053}
+\date{}
+\begin{document}
+\begin{titlepage}
+\centering
+\vspace*{\fill}
+{\Huge\textbf{TALLER I PROFILING}}
+\vspace{2em}
+
+{\large Estructura De Datos.}\\
+{\large Gamboa Erika  Cod.506221053}
+\vspace*{\fill}
+\end{titlepage}
+
+\begin{quote}
+El concepto de mutabilidad e inmutabilidad es consistente en todos los lenguajes de programación, aunque la implementación y aplicación de estos conceptos pueden variar según el lenguaje específico.
+\end{quote}
+\section{Tabla Tipo Datos Python}
+\begin{table}[htbp]
+    \centering
+    \rowcolors{2}{blue!10}{white}
+    \begin{tabular}{|p{4cm}|p{3cm}|c|c|}
+    \hline
+    \textbf{Nombre} & \textbf{Dato} & \textbf{Mutable} & \textbf{Inmutable} \\
+    \hline
+    Enteros & int &  & \faCheck \\
+    Flotantes & float &  & \faCheck \\
+    Complejos  & complex & & \faCheck \\
+    Cadenas  & str &  & \faCheck \\
+    Booleanos  & bool &  & \faCheck \\
+    Listas  & list & \faCheck & \\
+    Tuplas  & tuple &  & \faCheck\\
+    Diccionarios  & dict & \faCheck & \\
+    Conjuntos & set & \faCheck & \\
+    Frozensets  & frozenset &  & \faCheck\\
+    Bytes & bytes &  & \faCheck\\
+    Arreglos de bytes  & bytearray &\faCheck & \\
+    Rangos  & range &  & \faCheck \\
+    Números decimales  & decimal &  & \faCheck\\
+    Números fraccionarios  & fractions &  & \faCheck\\
+    Mapeos de memoria & memoryview & \faCheck & \\
+    \hline
+    \end{tabular}
+    \label{tab:ejemplo}
+\end{table}
+\begin{minipage}{0.6\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{Captura1.JPG}
+\end{minipage}
+\hfill
+\begin{minipage}{0.5\textwidth}
+Los enteros \textbf{(int) son inmutables}, lo que significa que no pueden modificarse directamente. Cuando asignamos un nuevo valor a una variable int, Python crea un nuevo objeto en lugar de modificar el existente. Esto se confirma al observar que las identidades (dirección en memoria) de los objetos antes y después de la reasignación son diferentes, indicando que se ha creado un nuevo objeto con el nuevo valor.
+\end{minipage}
+\newpage
+\section{Tabla Tipo Datos Golang}
+\begin{table}[htbp]
+    \centering
+    \rowcolors{2}{blue!10}{white}
+    \begin{tabular}{|p{4cm}|p{3cm}|c|c|}
+    \hline
+    \textbf{Nombre} & \textbf{Dato} & \textbf{Mutable} & \textbf{Inmutable} \\
+    \hline
+    Enteros & int &  & \faCheck \\
+    Flotantes & float64 &  & \faCheck \\
+    Booleanos & bool &  & \faCheck \\
+    Cadenas de texto & string &  & \faCheck \\
+    Arrays & [n]T & \faCheck & \\
+    Slices & []T & \faCheck & \\
+    Mapas & map[K]V & \faCheck & \\
+    Structs & struct{} & \faCheck & \\
+    Punteros & *T & \faCheck & \\
+    Canal (Channel) & chan T & \faCheck & \\
+ \hline
+    \end{tabular}
+    \label{tab:ejemplo}
+\end{table}
+    Las \textbf{cadenas de textos son inmutables} en Go, aquí al intentar modificar el carácter de la cadena, se obtendrá un error de compilación,
+    ya que una ves creada la cadena no puede ser modificadas.\\
+\includegraphics[width=\textwidth]{Captura2.JPG}
+
+\newpage
+\section{Tabla Tipo Datos Java}
+
+\begin{table}[htbp]
+    \centering
+    \rowcolors{2}{blue!10}{white}
+    \begin{tabular}{|p{3cm}|p{5cm}|c|c|}
+    \hline
+    \textbf{Nombre} & \textbf{Dato} & \textbf{Mutable} & \textbf{Inmutable} \\
+    \hline
+    Enteros & byte &  & \faCheck \\
+Enteros & short &  & \faCheck \\
+Enteros & int &  & \faCheck \\
+Enteros & long &  & \faCheck \\
+Flotantes & float &  & \faCheck \\
+Flotantes & double &  & \faCheck \\
+Caracteres & char &  & \faCheck \\
+Texto & String &  & \faCheck \\
+Booleanos & boolean &  & \faCheck \\
+Clases & Clases de usuario & \faCheck & \\
+Interfaces & Interfaces & \faCheck & \\
+Arreglos & Arrays & \faCheck & \\
+Enumeraciones & Enums & \faCheck & \\
+Clases Wrappers & Byte, Short, Integer, Long, Float, Double, Character, Boolean & \faCheck & \\
+Implementaciones de colecciones & Colecciones (ArrayList, LinkedList, HashSet, etc.) & \faCheck & \\
+    \hline
+    \end{tabular}
+    \label{tab:ejemplo}
+\end{table}
+
+        Java no permite ver la dirección de memoria de los objetos, es por eso que para este ejemplo utilizamos el método\textbf{System.identityHashCode(Object obj)} para obtener la identidad del objeto. Para el dato inmutable \textbf{int}, su hash cambia al asignarle un nuevo valor ya que realmnete lo que hizo fue crear un nuevo espacio en memeoria. Para el tipo de dato\textbf{Array}, aún después de la modificación en uno de sus indice, su hash continúa igual ya que este es mutable.
+
+        \includegraphics[scale=0.6]{Captura3.JPG}
+\newpage
+
+\section{Tabla Tipo Datos C++}
+En C++, no hay tipos de datos inmutables proporcionados por el lenguaje de forma predeterminada.
+Sin embargo, se pueden crear tipos de datos inmutables en C++ utilizando el modificador const 
+\begin{table}[htbp]
+    \centering
+    \rowcolors{2}{blue!10}{white}
+    \begin{tabular}{|p{3cm}|p{5cm}|p{2cm}|}
+   
+    \hline
+    \textbf{Nombre} & \textbf{Dato} & \textbf{Mutable}  \\
+    \hline
+    Enteros & int & \faCheck \\
+Enteros & long & \faCheck  \\
+Flotantes & float & \faCheck  \\
+Flotantes & double & \faCheck  \\
+Caracteres & char & \faCheck  \\
+Booleanos & boolean & \faCheck  \\
+Arreglos & int[], double[] & \faCheck  \\
+Punteros & int*, double* & \faCheck  \\
+Estructuras & struct & \faCheck  \\
+Uniones & union & \faCheck \\
+Clases & class & \faCheck  \\
+
+ \hline
+    \end{tabular}
+    \label{tab:ejemplo}
+\end{table}
+
+\begin{minipage}{0.9\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{Captura4.JPG}
+\end{minipage}
+\hfill
+\begin{minipage}{0.5\textwidth}
+
+\end{minipage}\\
+\\
+En este ejemplo, se demuestra que para C++, el tipo de dato int es mutable. Esto se ve al asignar un nuevo valor a la variable num dentro de la función numero(). A pesar de que el valor de num cambia de 10 a 90, la variable sigue siendo el mismo objeto de memoria.
+
+\newpage
+\section{Profiler  Python}
+
+\large Algoritmo 1\\
+\begin{minipage}{0.6\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{algoritmo1.png}
+\end{minipage}
+\hfill
+\begin{minipage}{0.5\textwidth}
+\includegraphics[width=\textwidth]{a11.JPG}
+\end{minipage}
+\\\\
+El algoritmo cuenta con un BigO O(1) contante el cual se puede ver reflejado en su Mem Usage donde la cantidad de memoria empleado es constante. 
+\\\\
+\includegraphics[width=\textwidth]{A1.JPG}\\
+
+
+\newpage
+\large Algoritmo 2\\
+
+\begin{minipage}{0.6\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{algoritmo2.png}
+\end{minipage}
+\hfill
+\begin{minipage}{0.5\textwidth}
+\includegraphics[width=\textwidth]{correc2.JPG}
+\end{minipage}
+\\\\
+El algoritmo cuenta con un BigO \( O(n^2) \)el cual se puede ver en la anidación de los dos ciclos for, también se puede ver este crecimiento en Mem Usage  donde la cantidad de memoria empleada es lineal. 
+\\\\
+\includegraphics[width=\textwidth]{A2.JPG}
+\newpage
+\large Algoritmo 3\\
+\includegraphics[width=\textwidth]{algoritmo3.png}
+\\
+\large Pico1\\\\
+\includegraphics[width=\textwidth]{31.JPG}
+\large Pico2\\\\
+\includegraphics[width=\textwidth]{3.2.JPG}
+\large Pico3\\\\
+\includegraphics[width=\textwidth]{33.JPG}
+\large Pico4\\\\
+\includegraphics[width=\textwidth]{34.JPG}
+\large Pico5\\\\
+\includegraphics[width=\textwidth]{3.5.JPG}
+El algoritmo cuenta con un BigO \( O(n^3) \), el cual se puede ver en el \texttt{main} del algoritmo. Los cinco picos 
+ en la grafica son causados por el "for i in range(5)".Cada pico en la grafica es el conjunto OperacionIntensivaMemoria y OperacioIntensivaCpu.\\\\
+\includegraphics[width=\textwidth]{A3.JPG}
+\newpage
+\large Algoritmo 4\\
+\begin{minipage}{0.6\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{algoritmo4.png}
+\end{minipage}
+\hfill
+\begin{minipage}{0.5\textwidth}
+\includegraphics[width=\textwidth]{es4.JPG}
+\end{minipage}
+\\\\El algoritmo cuenta con un BigO \( O(log n) \), el cual se puede ver en la búsqueda binaria realizada. en Mem usage se muestra como el uso de memoria es contante.\\\\\\
+\includegraphics[width=\textwidth]{A4.JPG}
+\newpage
+\large Algoritmo 5\\
+\begin{minipage}{0.6\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{algoritmo5.png}
+\end{minipage}
+\hfill
+\begin{minipage}{0.5\textwidth}
+\includegraphics[width=\textwidth]{Captura5.JPG}
+\end{minipage}
+\\\\El algoritmo cuenta con una complejidad espacial de BigO \( O(2^n) \), y una complejidad de espacial BigO \( O(1) \) . en Mem usage se muestra como el uso de memoria es contante.\\\\\\
+\includegraphics[width=\textwidth]{A5.JPG}
+\newpage
+\section{Tabla de comparación  de algoritmos}
+ Java fue mas eficiente en los tiempos de ejecución pero Python tendió a usar menos memoria.
+\begin{table}[htbp]
+\centering
+\label{tab:algoritmos}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+\multicolumn{2}{|c|}{Algoritmo} & \multicolumn{2}{|c|}{JAVA} & \multicolumn{2}{|c|}{PYTHON} \\ \hline
+& & Tiempo & Memoria & Tiempo & Memoria \\ \hline
+\multicolumn{2}{|c|}{Algoritmo 1} & 143ms & Max used Heap: 9.9001.208 &  0.0625009536743164 seg & 36.9 MiB \\ \hline
+\multicolumn{2}{|c|}{Algoritmo 1} & 178,434ms &  Max used Heap: 122.171.656B& 180.32537317276 seg & 105.9 MiB \\ \hline
+\multicolumn{2}{|c|}{Algoritmo 1} &  13.549ms & Max used Heap: 30.872B & 181.442373752594 seg & 56.1 MiB \\ \hline
+\multicolumn{2}{|c|}{Algoritmo 1} & 127ms & Max used Heap: 9.901B & 0.046872615814208984 seg & 36.9 MiB \\ \hline
+\multicolumn{2}{|c|}{Algoritmo 1} & 115ms & Max used Heap: 9.901B & 0.07812333106994629 seg & 36.8 MiB \\ \hline
+\end{tabular}
+\end{table}
+\end{document}

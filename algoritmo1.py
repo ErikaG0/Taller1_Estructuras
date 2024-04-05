@@ -1,6 +1,5 @@
 from memory_profiler import profile
 
-
 @profile
 def imprimir(lista):
     n = lista
